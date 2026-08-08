@@ -745,9 +745,11 @@ public:
 						cout << "5. Salary\n";
 						cin >> t.salary;
 						break;
+					case 6:
 						cout << "6. Address\n";
 						cin >> t.address;
 						break;
+					case 7:
 						cout << "7. Joined Date\n";
 						cin >> t.joined_date;
 						break;
@@ -852,7 +854,8 @@ public:
 	void add_branch() {
 		
 		ofstream file("branches.txt" ,ios::app);
-		int next_branch_id ;
+		int next_branch_id =branches.size()+1
+		;
 		total_branches++;
 		branch b;
 		b.branch_id = next_branch_id++;
@@ -1138,13 +1141,209 @@ public:
 };
 int main() {
 
-    branch q;
+    schools s;
 
-    // Load existing students
-    q.load_students();
+    // Load existing branches
+    s.load_branches();
 
-    // Add a student
-    q.add_student();
+    int choice;
+
+    while (true) {
+
+        cout << "\n\n";
+        cout << "========================================\n";
+        cout << "       SCHOOL MANAGEMENT SYSTEM\n";
+        cout << "========================================\n";
+        cout << "1. Branch Management\n";
+        cout << "2. Student Management\n";
+        cout << "3. Teacher Management\n";
+        cout << "4. Exit\n";
+        cout << "========================================\n";
+
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+
+        // ================================
+        // BRANCH MANAGEMENT
+        // ================================
+        case 1: {
+
+            int branchChoice;
+
+            while (true) {
+
+                cout << "\n\n";
+                cout << "========================================\n";
+                cout << "          BRANCH MANAGEMENT\n";
+                cout << "========================================\n";
+                cout << "1. Add Branch\n";
+                cout << "2. Show All Branches\n";
+                cout << "3. Show Branch Details\n";
+                cout << "4. Remove Branch\n";
+                cout << "5. Back to Main Menu\n";
+                cout << "========================================\n";
+
+                cout << "Enter your choice: ";
+                cin >> branchChoice;
+
+                switch (branchChoice) {
+
+                case 1:
+                    s.add_branch();
+                    break;
+
+                case 2:
+                    s.show_total_branches();
+                    break;
+
+                case 3:
+                    s.show_branch();
+                    break;
+
+                case 4:
+                    s.remove_branch();
+                    break;
+
+                case 5:
+                    break;
+
+                default:
+                    cout << "Invalid choice. Try again.\n";
+                }
+
+                if (branchChoice == 5)
+                    break;
+            }
+
+            break;
+        }
+
+        // ================================
+        // STUDENT MANAGEMENT
+        // ================================
+        case 2: {
+
+            int studentChoice;
+
+            while (true) {
+
+                cout << "\n\n";
+                cout << "========================================\n";
+                cout << "          STUDENT MANAGEMENT\n";
+                cout << "========================================\n";
+                cout << "1. Add Student\n";
+                cout << "2. Remove Student\n";
+                cout << "3. View Student Details\n";
+                cout << "4. Update Student Details\n";
+                cout << "5. Back to Main Menu\n";
+                cout << "========================================\n";
+
+                cout << "Enter your choice: ";
+                cin >> studentChoice;
+
+                switch (studentChoice) {
+
+                case 1:
+                    s.add_student();
+                    break;
+
+                case 2:
+                    s.remove_student();
+                    break;
+
+                case 3:
+                    s.display_student_details();
+                    break;
+
+                case 4:
+                    s.update_student_details();
+                    break;
+
+                case 5:
+                    break;
+
+                default:
+                    cout << "Invalid choice. Try again.\n";
+                }
+
+                if (studentChoice == 5)
+                    break;
+            }
+
+            break;
+        }
+
+        // ================================
+        // TEACHER MANAGEMENT
+        // ================================
+        case 3: {
+
+            int teacherChoice;
+
+            while (true) {
+
+                cout << "\n\n";
+                cout << "========================================\n";
+                cout << "          TEACHER MANAGEMENT\n";
+                cout << "========================================\n";
+                cout << "1. Add Teacher\n";
+                cout << "2. Remove Teacher\n";
+                cout << "3. View Teacher Details\n";
+                cout << "4. Update Teacher Details\n";
+                cout << "5. Back to Main Menu\n";
+                cout << "========================================\n";
+
+                cout << "Enter your choice: ";
+                cin >> teacherChoice;
+
+                switch (teacherChoice) {
+
+                case 1:
+                    s.add_teacher();
+                    break;
+
+                case 2:
+                    s.remove_teacher();
+                    break;
+
+                case 3:
+                    s.dispaly_teacher_details();
+                    break;
+
+                case 4:
+                    s.update_teacher_details();
+                    break;
+
+                case 5:
+                    break;
+
+                default:
+                    cout << "Invalid choice. Try again.\n";
+                }
+
+                if (teacherChoice == 5)
+                    break;
+            }
+
+            break;
+        }
+
+        // ================================
+        // EXIT
+        // ================================
+        case 4:
+
+            cout << "\nThank you for using School Management System!\n";
+
+            return 0;
+
+        default:
+
+            cout << "\nInvalid choice. Please try again.\n";
+        }
+    }
 
     return 0;
 }
