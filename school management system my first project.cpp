@@ -1136,15 +1136,18 @@ public:
 
 	
 };
-
 int main() {
 
+    branch q;
 
-	schools s;
-	branch q;
-	s.load_branches();
-	q.load_students();
-	q.load_teacher();
+    // Load existing students
+    q.load_students();
+
+    // Add a student
+    q.add_student();
+
+    return 0;
+}
 	
 
 	
