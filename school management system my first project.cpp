@@ -5,6 +5,10 @@
 #include<algorithm>
 #include<cctype>
 using namespace std;
+class person {
+public:
+virtual void showdetails()=0;
+};
 
 class students {
 public :
